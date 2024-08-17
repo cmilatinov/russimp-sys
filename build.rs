@@ -165,6 +165,8 @@ fn main() {
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
 
+    println!("cargo:rerun-if-changed=build.rs");
+
     // Look for assimp lib in Brew install paths on MacOS.
     // See https://stackoverflow.com/questions/70497361/homebrew-mac-m1-cant-find-installs
     #[cfg(all(target_os = "macos", target_arch = "aarch64"))]
